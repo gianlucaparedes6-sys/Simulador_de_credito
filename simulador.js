@@ -1,5 +1,14 @@
 //AQUI EL JAVASCRIPT PARA MANIPULAR EL HTMLfunction calcularDisponible(ingresos, egresos) {
  function calcular(){
+    if(
+    !validarCampo("txtIngresos") ||
+    !validarCampo("txtEgresos") ||
+    !validarCampo("txtMonto") ||
+    !validarCampo("txtPlazo") ||
+    !validarCampo("txtTasaInteres")
+){
+    return;
+}
     //recuperamos los componentes de las cajas de textos
     //recuperamos los valores de los componentes todo esto desde utilitarios.js
     let ingresos = parseFloat(document.getElementById("txtIngresos").value);
@@ -31,4 +40,21 @@
     let estadoCredito = aprobarCredito(capacidadPago,cuotaMensual);
     document.getElementById("spnEstadoCredito").textContent = estadoCredito;
 
+}
+function validarCampo(idInput){
+    let valor = document.getElementById(idInput).value;
+    let error = document.getElementById("error_" + idInput);
+
+    if(valor.trim() === ""){
+        error.textContent = "Campo obligatorio";
+        return false;
+    }
+
+    if(isNaN(valor)){
+        error.textContent = "Solo números";
+        return false;
+    }
+
+    error.textContent = "";
+    return true;
 }

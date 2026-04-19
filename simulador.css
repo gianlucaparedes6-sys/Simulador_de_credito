@@ -160,3 +160,10 @@ button:hover {
         flex-direction: column;
     }
 }
+.error {
+    color: #6b7280; /* gris */
+    font-style: italic;
+    font-size: 0.8rem;
+    margin-top: 4px;
+    display: block;
+}
