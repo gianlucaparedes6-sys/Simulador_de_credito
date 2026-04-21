@@ -2,7 +2,9 @@
  function calcular(){
     if(
     !validarCampo("txtIngresos") ||
-    !validarCampo("txtEgresos") ||
+    !validarCampo("txtArriendo") ||
+    !validarCampo("txtAlimentacion") ||
+    !validarCampo("txtVarios") ||
     !validarCampo("txtMonto") ||
     !validarCampo("txtPlazo") ||
     !validarCampo("txtTasaInteres")
@@ -12,9 +14,15 @@
     //recuperamos los componentes de las cajas de textos
     //recuperamos los valores de los componentes todo esto desde utilitarios.js
     let ingresos = parseFloat(document.getElementById("txtIngresos").value);
-    let egresos = parseFloat(document.getElementById("txtEgresos").value);
+    let arriendo = parseFloat(document.getElementById("txtArriendo").value);
+    let alimentacion = parseFloat(document.getElementById("txtAlimentacion").value);
+    let varios = parseFloat(document.getElementById("txtVarios").value);
+    let totalGastos = arriendo + alimentacion + varios;
+    totalGastos = parseFloat(totalGastos.toFixed(2));
+
+    document.getElementById("spnTotalGastos").textContent = totalGastos;
     //disponible
-    let disponible = calcularDisponible(ingresos,egresos);
+    let disponible = calcularDisponible(ingresos, totalGastos);
     disponible = parseFloat(disponible.toFixed(2));
     document.getElementById("spnDisponible").textContent = disponible;
     //capacidad de pago
